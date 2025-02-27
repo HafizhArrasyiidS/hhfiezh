@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
@@ -32,7 +31,7 @@ export const Navbar = () => {
         } else {
             router.push("/"); // Redirect jika elemen tidak ditemukan
         }
-    };    
+    };
 
     return (
         <div className="z-50 fixed flex justify-center w-full text-white font-bold">
