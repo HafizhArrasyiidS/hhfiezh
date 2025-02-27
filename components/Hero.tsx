@@ -1,12 +1,10 @@
 "use client"
 
-// import { Canvas } from "@react-"
 import React, { useEffect } from "react"
 import { FiArrowRight } from "react-icons/fi"
 import { useMotionTemplate, useMotionValue, motion, animate } from "framer-motion"
 import Image from "next/image"
 import profilepic from "@/assets/2.jpg"
-import obj from "@/assets/obj1.png"
 
 const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"]
 
@@ -45,24 +43,6 @@ export const Hero = () => {
                 />
 
                 <div className="flex bg-white/10 shadow-xl p-3 rounded-3xl justify-center items-center space-x-2 mb-4">
-                    {/* <Image
-                        src={obj}
-                        alt="object"
-                        width={30}
-                        className="rounded-2xl mx-auto"
-                    />
-                    <Image
-                        src={obj}
-                        alt="object"
-                        width={30}
-                        className="rounded-2xl mx-auto"
-                    />
-                    <Image
-                        src={obj}
-                        alt="object"
-                        width={30}
-                        className="rounded-2xl mx-auto"
-                    /> */}
                     <p className="font-medium px-4">Ravi de vous rencontrer</p>
                 </div>
             
