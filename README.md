@@ -12,9 +12,9 @@ Welcome to my personal website! This website showcases my projects, skills, and 
 - Smooth animations and modern UI
 
 ## 🛠️ Technologies Used
-- HTML, CSS, JavaScript
+- HTML, CSS, TypeScript
 - Tailwind CSS for styling
-- React.js for frontend development
+- NextJs for frontend development
 - Vercel for deployment
 
 ## 📸 Screenshots
