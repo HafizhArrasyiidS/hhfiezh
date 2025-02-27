@@ -46,7 +46,6 @@ export const Portfolio = () => {
 
     const color = useMotionValue(COLORS_TOP[0])
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         animate(color, COLORS_TOP, {
             ease: "easeInOut",
@@ -54,7 +53,7 @@ export const Portfolio = () => {
             repeat: Infinity,
             repeatType: "mirror"
         })
-    }, []) // Tidak menambahkan `color` dalam dependencies karena tidak perlu berubah
+    }, []) 
 
     const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #000 50%, ${color})`
     const textColor = useMotionTemplate`${color}`
@@ -62,7 +61,7 @@ export const Portfolio = () => {
     return (
         <motion.section style={{ backgroundImage }} id="portfolio" className="py-32 text-white">
             <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12">
-                <div className="">
+                <div>
                     <h2 className="text-6xl font-bold mb-10">
                         Selected <motion.span style={{ color: textColor }} className="text-gray-400">Project</motion.span>
                     </h2>
@@ -71,29 +70,54 @@ export const Portfolio = () => {
                             key={project.id}
                             onClick={() => setSelectedProject(project)}
                             className="cursor-pointer mb-8 group"
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ type: "spring", stiffness: 300 }}
                         >
                             <p className="text-gray-400">{project.year}</p>
-                            <motion.h3 className={`text-3xl font-semibold group-hover:text-gray-400 transition-colors 
-                                ${selectedProject.id === project.id ? 'text-gray-200' : ''}`}>
+                            <motion.h3 
+                                className={`text-3xl font-semibold group-hover:text-gray-400 transition-colors ${selectedProject.id === project.id ? 'text-gray-200' : ''}`}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, ease: "easeOut" }}
+                            >
                                 {project.title}
                             </motion.h3>
                             {selectedProject.id === project.id && (
-                                <div className="border-b-2 border-gray-200 my-4"></div>
+                                <motion.div 
+                                    className="border-b-2 border-gray-200 my-4"
+                                    initial={{ scaleX: 0 }}
+                                    animate={{ scaleX: 1 }}
+                                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                                />
                             )}
                             {selectedProject.id === project.id && (
-                                <p className="text-gray-400 transition-all duration-500 ease-in-out">{project.description}</p>
+                                <motion.p 
+                                    className="text-gray-400 transition-all duration-500 ease-in-out"
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.5, ease: "easeOut" }}
+                                >
+                                    {project.description}
+                                </motion.p>
                             )}
                         </motion.div>
                     ))}
                 </div>
             
-                <Image
-                    src={selectedProject.image.src}
-                    alt={selectedProject.title}
-                    className="rounded-xl shadow-lg transition-opacity duration-500 ease-in-out"
-                    width={800}
-                    height={450}
-                />
+                <motion.div
+                    key={selectedProject.id} // Ensures animation runs every time a new project is selected
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                >
+                    <Image
+                        src={selectedProject.image.src}
+                        alt={selectedProject.title}
+                        className="rounded-xl shadow-lg transition-opacity duration-500 ease-in-out"
+                        width={800}
+                        height={450}
+                    />
+                </motion.div>
             </div>
         </motion.section>
     )
