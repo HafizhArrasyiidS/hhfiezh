@@ -16,9 +16,9 @@ export const Hero = () => {
             ease: "easeInOut",
             duration: 10,
             repeat: Infinity,
-            repeatType: "mirror"
+            repeatType: "mirror",
         })
-    }, [])
+    }, []) // Dependency array kosong agar tidak memicu peringatan
 
     const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #000 50%, ${color})`
     const border = useMotionTemplate`1px solid ${color}`
