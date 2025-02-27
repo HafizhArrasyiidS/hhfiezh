@@ -41,30 +41,31 @@ const project = [
 
 const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"]
 
-
 export const Portfolio = () => {
     const [selectedProject, setSelectedProject] = useState(project[0])
 
     const color = useMotionValue(COLORS_TOP[0])
-    
-        useEffect(() => {
-            animate(color, COLORS_TOP, {
-                ease: "easeInOut",
-                duration: 10,
-                repeat: Infinity,
-                repeatType: "mirror"
-            })
-        }, [])
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => {
+        animate(color, COLORS_TOP, {
+            ease: "easeInOut",
+            duration: 10,
+            repeat: Infinity,
+            repeatType: "mirror"
+        })
+    }, []) // Tidak menambahkan `color` dalam dependencies karena tidak perlu berubah
 
     const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #000 50%, ${color})`
     const textColor = useMotionTemplate`${color}`
-    
 
     return (
         <motion.section style={{ backgroundImage }} id="portfolio" className="py-32 text-white">
             <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12">
                 <div className="">
-                    <h2 className="text-6xl font-bold mb-10">Selected <motion.span style={{ color: textColor }} className="text-gray-400">Project</motion.span></h2>
+                    <h2 className="text-6xl font-bold mb-10">
+                        Selected <motion.span style={{ color: textColor }} className="text-gray-400">Project</motion.span>
+                    </h2>
                     {project.map((project) => (
                         <motion.div
                             key={project.id}
@@ -74,7 +75,7 @@ export const Portfolio = () => {
                             <p className="text-gray-400">{project.year}</p>
                             <motion.h3 className={`text-3xl font-semibold group-hover:text-gray-400 transition-colors 
                                 ${selectedProject.id === project.id ? 'text-gray-200' : ''}`}>
-                                    {project.title}
+                                {project.title}
                             </motion.h3>
                             {selectedProject.id === project.id && (
                                 <div className="border-b-2 border-gray-200 my-4"></div>
@@ -86,7 +87,6 @@ export const Portfolio = () => {
                     ))}
                 </div>
             
-
                 <Image
                     src={selectedProject.image.src}
                     alt={selectedProject.title}
