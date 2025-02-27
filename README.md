@@ -1,4 +1,4 @@
-# hhfiezh.vercel.app
+![image](https://github.com/user-attachments/assets/709672de-ae2f-4cdb-90ef-61e869b834d2)# hhfiezh.vercel.app
 
 Welcome to my personal website! This website showcases my projects, skills, and portfolio as a mobile application developer.
 
@@ -16,9 +16,6 @@ Welcome to my personal website! This website showcases my projects, skills, and 
 - Tailwind CSS for styling
 - NextJs for frontend development
 - Vercel for deployment
-
-## 📸 Screenshots
-![Homepage Preview](https://via.placeholder.com/800x400)
 
 ## 📌 Installation & Setup
 1. Clone the repository:
