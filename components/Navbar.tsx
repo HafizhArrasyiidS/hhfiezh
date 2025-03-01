@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 import { AiOutlineUser, AiOutlineFundProjectionScreen, AiOutlineAppstore, AiOutlineMail } from "react-icons/ai";
 
 const navLinks = [
