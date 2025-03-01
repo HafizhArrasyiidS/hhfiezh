@@ -43,16 +43,18 @@ const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"]
 
 export const Portfolio = () => {
     const [selectedProject, setSelectedProject] = useState(project[0])
-
     const color = useMotionValue(COLORS_TOP[0])
 
     useEffect(() => {
-        animate(color, COLORS_TOP, {
+        const controls = animate(color, COLORS_TOP, {
             ease: "easeInOut",
             duration: 10,
             repeat: Infinity,
             repeatType: "mirror"
         })
+        
+        return controls.stop // Cleanup animation on unmount
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []) 
 
     const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #000 50%, ${color})`
@@ -65,24 +67,24 @@ export const Portfolio = () => {
                     <h2 className="text-6xl font-bold mb-10">
                         Selected <motion.span style={{ color: textColor }} className="text-gray-400">Project</motion.span>
                     </h2>
-                    {project.map((project) => (
+                    {project.map((proj) => (
                         <motion.div
-                            key={project.id}
-                            onClick={() => setSelectedProject(project)}
+                            key={proj.id}
+                            onClick={() => setSelectedProject(proj)}
                             className="cursor-pointer mb-8 group"
                             whileHover={{ scale: 1.05 }}
                             transition={{ type: "spring", stiffness: 300 }}
                         >
-                            <p className="text-gray-400">{project.year}</p>
+                            <p className="text-gray-400">{proj.year}</p>
                             <motion.h3 
-                                className={`text-3xl font-semibold group-hover:text-gray-400 transition-colors ${selectedProject.id === project.id ? 'text-gray-200' : ''}`}
+                                className={`text-3xl font-semibold group-hover:text-gray-400 transition-colors ${selectedProject.id === proj.id ? 'text-gray-200' : ''}`}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, ease: "easeOut" }}
                             >
-                                {project.title}
+                                {proj.title}
                             </motion.h3>
-                            {selectedProject.id === project.id && (
+                            {selectedProject.id === proj.id && (
                                 <motion.div 
                                     className="border-b-2 border-gray-200 my-4"
                                     initial={{ scaleX: 0 }}
@@ -90,14 +92,14 @@ export const Portfolio = () => {
                                     transition={{ duration: 0.5, ease: "easeInOut" }}
                                 />
                             )}
-                            {selectedProject.id === project.id && (
+                            {selectedProject.id === proj.id && (
                                 <motion.p 
                                     className="text-gray-400 transition-all duration-500 ease-in-out"
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ duration: 0.5, ease: "easeOut" }}
                                 >
-                                    {project.description}
+                                    {proj.description}
                                 </motion.p>
                             )}
                         </motion.div>
