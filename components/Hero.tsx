@@ -12,13 +12,14 @@ export const Hero = () => {
     const color = useMotionValue(COLORS_TOP[0])
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         animate(color, COLORS_TOP, {
             ease: "easeInOut",
             duration: 10,
             repeat: Infinity,
             repeatType: "mirror",
         })
-    }, []) // Dependency array kosong agar tidak memicu peringatan
+    }, []) // Tetap pakai array kosong agar hanya berjalan sekali
 
     const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #000 50%, ${color})`
     const border = useMotionTemplate`1px solid ${color}`
