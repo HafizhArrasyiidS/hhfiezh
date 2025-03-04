@@ -1,5 +1,5 @@
 const services = [
-    { id: '01', title: 'Web Design', description: 'Crafting visually stunning and user-friendly websites tailored to your brand\'s identity and goals.' },
+    { id: '01', title: 'Web Development', description: 'Crafting visually stunning and user-friendly websites tailored to your brand\'s identity and goals.' },
     { id: '02', title: 'Mobile Application', description: 'Crafting visually stunning, intuitive, and user-friendly mobile apps tailored to your brands identity and goals.' },
     { id: '03', title: 'UX/UI Design', description: 'Creating intuitive and engaging user experiences and interfaces that prioritize user satisfaction and ease of use.' },
 ]
