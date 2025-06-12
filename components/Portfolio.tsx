@@ -15,7 +15,6 @@ import {
   AnimatePresence,
 } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import type { Variants } from "framer-motion"
 
 const project = [
   {
