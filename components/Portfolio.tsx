@@ -13,6 +13,8 @@ import {
   motion,
   animate,
   AnimatePresence,
+  TargetAndTransition,
+  Variants,
 } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
@@ -74,7 +76,7 @@ export const Portfolio = () => {
       repeatType: "mirror",
     })
     return controls.stop
-  }, [])
+  }, [color]) // ✅ Tambahkan dependency 'color'
 
   const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #000 50%, ${color})`
   const textColor = useMotionTemplate`${color}`
@@ -91,31 +93,20 @@ export const Portfolio = () => {
 
   const selectedProject = project[currentIndex]
 
-  const variants = {
-    enter: (dir: number) => ({
-        x: dir > 0 ? 300 : -300,
-        opacity: 0,
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
+  const variants: Variants = {
+    enter: (dir: number): TargetAndTransition => ({
+      x: dir > 0 ? 300 : -300,
+      opacity: 0,
     }),
     center: {
-        x: 0,
-        opacity: 1,
-        position: "relative",
-        width: "100%",
+      x: 0,
+      opacity: 1,
     },
-    exit: (dir: number) => ({
-        x: dir > 0 ? -300 : 300,
-        opacity: 0,
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
+    exit: (dir: number): TargetAndTransition => ({
+      x: dir > 0 ? -300 : 300,
+      opacity: 0,
     }),
-    }
-
+  }
 
   return (
     <motion.section
@@ -157,7 +148,6 @@ export const Portfolio = () => {
                 {selectedProject.year}
               </p>
 
-              {/* Tombol kiri - Judul - Tombol kanan */}
               <div className="flex items-center justify-center gap-3 flex-wrap mb-4">
                 <button
                   onClick={prevProject}
