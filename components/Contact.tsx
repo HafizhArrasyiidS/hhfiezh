@@ -10,14 +10,14 @@ export const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className='grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16'
+                className='max-w-2xl mx-auto'
             >
                 <div className="space-y-8 md:space-y-12">
                     <motion.h2
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className='text-5xl md:text-7xl font-bold text-gray-300'
+                        className='text-5xl md:text-7xl font-bold text-gray-300 text-center'
                     >
                         Get in <span className='text-blue-500'>Touch</span>
                     </motion.h2>
@@ -42,30 +42,9 @@ export const Contact = () => {
                             </a>
                         </div>
 
-                        <div className="space-y-2">
-                            <p className='text-base md:text-lg text-gray-300'>Address</p>
-                            <address className='text-base md:text-lg not-italic leading-relaxed'>
-                                Jl. Raya Pilang Sari - Pekoren, Kec Rembang, Kab Pasuruan
-                            </address>
-                        </div>
+                        
                     </motion.div>
                 </div>
-
-                <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                    className='w-full h-64 md:h-full md:min-h-[400px] rounded-2xl overflow-hidden'
-                >
-                    <iframe 
-                        src="https://maps.google.com/maps?q=Pekoren&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                        width="100%"
-                        height="100%"
-                        style={{ border: 0 }}
-                        allowFullScreen
-                        loading='lazy'
-                    ></iframe>
-                </motion.div>
             </motion.div>
         </section>
     )

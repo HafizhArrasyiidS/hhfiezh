@@ -1,38 +1,27 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import React from "react";
+import { AiOutlineUser, AiOutlineFundProjectionScreen, AiOutlineAppstore, AiOutlineMail } from "react-icons/ai";
 
 const navLinks = [
-    { title: "About", path: "#keymetrics" },
-    { title: "Portfolio", path: "#portfolio" },
-    { title: "Stack", path: "#stack" },
-    { title: "Contact", path: "#contact" },
+    { title: "About", path: "#keymetrics", icon: <AiOutlineUser size={24} /> },
+    { title: "Portfolio", path: "#portfolio", icon: <AiOutlineFundProjectionScreen size={24} /> },
+    { title: "Stack", path: "#stack", icon: <AiOutlineAppstore size={24} /> },
+    { title: "Contact", path: "#contact", icon: <AiOutlineMail size={24} /> },
 ];
 
 export const Navbar = () => {
-    const [nav, setNav] = useState(false);
     const router = useRouter();
-
-    const toggleNav = () => {
-        setNav(!nav);
-    };
-
-    const closeNav = () => {
-        setNav(false);
-    };
 
     const handleScroll = (path: string) => {
         const element = document.querySelector(path);
         if (element) {
             element.scrollIntoView({ behavior: "smooth" });
-            closeNav();
         } else {
             router.push("/"); // Redirect jika elemen tidak ditemukan
         }
-    };    
+    };
 
     return (
         <div className="z-50 fixed flex justify-center w-full text-white font-bold">
@@ -52,32 +41,17 @@ export const Navbar = () => {
                 </ul>
             </div>
 
-            {/* Mobile Menu Toggle */}
-            <div
-                onClick={toggleNav}
-                className="md:hidden absolute top-5 right-14 border rounded z-50 text-white/70 border-white/70 p-2"
-            >
-                {nav ? <AiOutlineClose size={30} /> : <AiOutlineMenu size={30} />}
-            </div>
-
             {/* Mobile Navbar */}
-            <div
-                className={`fixed left-0 top-0 w-full h-full bg-black/90 transform transition-transform duration-300 ${
-                    nav ? "translate-x-0" : "-translate-x-full"
-                }`}
-            >
-                <ul className="flex flex-col items-center justify-center space-y-8 h-full">
-                    {navLinks.map((link, index) => (
-                        <li key={index}>
-                            <button
-                                onClick={() => handleScroll(link.path)}
-                                className="text-5xl text-white"
-                            >
-                                {link.title}
-                            </button>
-                        </li>
-                    ))}
-                </ul>
+            <div className="md:hidden fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-black/70 rounded-full p-3 flex space-x-6">
+                {navLinks.map((link, index) => (
+                    <button
+                        key={index}
+                        onClick={() => handleScroll(link.path)}
+                        className="text-white text-2xl hover:text-white/50 transition-all"
+                    >
+                        {link.icon}
+                    </button>
+                ))}
             </div>
         </div>
     );
