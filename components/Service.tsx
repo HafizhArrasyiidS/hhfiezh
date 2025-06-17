@@ -44,7 +44,7 @@ export const Services = () => {
     if (!container) return
 
     let animationFrame: number
-    let scrollSpeed = 0.5
+    const scrollSpeed = 0.5
 
     const animateScroll = () => {
       if (!container || selected) {
