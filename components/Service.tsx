@@ -82,10 +82,10 @@ export const Services = () => {
             {loopingData.map((item, index) => (
               <div
                 key={index}
-                className="min-w-[280px] sm:min-w-[320px] md:min-w-[360px] max-w-[90vw] flex-shrink-0 bg-[#1c1c1e] rounded-2xl shadow-xl p-5 sm:p-6 cursor-pointer transition-transform duration-300 hover:scale-105"
+                className="min-w-[260px] sm:min-w-[300px] md:min-w-[340px] max-w-[90vw] flex-shrink-0 bg-[#1c1c1e] rounded-2xl shadow-xl p-4 sm:p-6 cursor-pointer transition-transform duration-300 hover:scale-105"
                 onClick={() => setSelected(item)}
               >
-                <div className="w-full h-48 sm:h-56 relative mb-4">
+                <div className="w-full h-44 sm:h-56 relative mb-4">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -93,7 +93,7 @@ export const Services = () => {
                     className="rounded-xl object-cover"
                   />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-2 text-white">
+                <h3 className="text-lg sm:text-xl font-bold mb-2 text-white">
                   {item.title}
                 </h3>
                 <p className="text-sm sm:text-base text-gray-300 leading-snug line-clamp-4">
@@ -108,27 +108,33 @@ export const Services = () => {
       {/* Modal */}
       {selected && (
         <div
-          className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4"
+          className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center px-4 py-8 sm:py-12 overflow-y-auto"
           onClick={() => setSelected(null)}
         >
           <div
-            className="bg-[#1c1c1e] rounded-2xl p-8 max-w-2xl w-full text-white relative shadow-2xl"
+            className="bg-[#1c1c1e] rounded-2xl p-6 sm:p-8 w-full max-w-5xl text-white relative shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              src={selected.image}
-              alt={selected.title}
-              className="rounded-xl mb-6 w-full h-64 object-cover"
-              width={800}
-              height={300}
-            />
-            <h3 className="text-3xl font-bold mb-4">{selected.title}</h3>
-            <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-6">{selected.description}</p>
+            {/* Gambar sertifikat responsif */}
+            <div className="relative w-full h-[60vh] sm:h-[70vh] mb-6">
+              <Image
+                src={selected.image}
+                alt={selected.title}
+                fill
+                className="object-contain rounded-xl"
+              />
+            </div>
+
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4">{selected.title}</h3>
+            <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-6">
+              {selected.description}
+            </p>
+
             <button
               onClick={() => setSelected(null)}
               className="mt-4 px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium"
             >
-              Tutup
+              Close
             </button>
           </div>
         </div>
