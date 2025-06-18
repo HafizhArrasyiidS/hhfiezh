@@ -1,3 +1,5 @@
+'use client'
+
 import { AiFillGithub, AiFillLinkedin, AiOutlineYoutube } from 'react-icons/ai';
 
 const socialLinks = [
@@ -7,9 +9,8 @@ const socialLinks = [
 ];
 
 export const Footer = () => {
-
   return (
-    <footer className="py-8 max-w-[1200px] mx-auto px-4">
+    <footer className="py-8 max-w-[1200px] mx-auto px-4 mb-0 sm:mb-0 max-sm:mb-24">
       <div className="mt-12 flex sm:justify-between justify-center items-center gap-10 max-sm:flex-col">
         <p className="text-gray-200">
           © 2025. Hafizh Arrasyiid Syahbana.
@@ -17,10 +18,12 @@ export const Footer = () => {
 
         <ul className="flex gap-5 flex-wrap">
           {socialLinks.map(({ href, Icon, label }) => (
-            <a 
+            <a
               key={label}
               href={href}
               aria-label={label}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-200 flex items-center justify-center w-10 h-10 rounded-full
                          hover:text-gray-400 transition-colors"
             >
