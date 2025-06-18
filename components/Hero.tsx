@@ -72,7 +72,7 @@ export const Hero = () => {
                 <div className="flex bg-white/10 shadow-xl p-3 rounded-3xl justify-center items-center space-x-2 mb-4">
                     <p className="font-medium px-4">Ravi de vous rencontrer</p>
                 </div>
-                <p className="my-6 max-w-xl text-center">Fullstack Developer based in Pasuruan, with over 3+ years of experience</p>
+                <p className="my-6 max-w-xl text-center">Fullstack Developer based in Malang, with over 3+ years of experience</p>
                 <motion.a
                     href="https://nnas.vercel.app"
                     target="_blank"
